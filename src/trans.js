@@ -1,8 +1,12 @@
-import keys from './translation-keys.json'
+import React from 'react'
+import TranslationContext from './translationContext'
 
 const trans = t => {
-    console.log(keys)
-    return t.toUpperCase()
+    return (
+        <TranslationContext.Consumer>
+            {translations => translations ? translations[t] : '<<' + t + '>>' }
+        </TranslationContext.Consumer>
+    )
 }
 
 export default trans
